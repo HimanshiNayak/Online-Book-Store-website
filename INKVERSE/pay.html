@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #edf1f7;
+        }
+
+        .payment-options-container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #c5d7fb;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-options-container h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .payment-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .payment-option:hover {
+            transform: translateY(-5px);
+        }
+
+        .payment-option img {
+            width: 200px;
+            height: 90px;
+            object-fit: cover;
+            margin-bottom: 17px;
+            border: 4px  solid rgb(171, 163, 163);
+        }
+
+        .payment-option h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .payment-option p {
+            text-align: center;
+            margin-bottom: 17px;
+        }
+
+        .select-payment-button {
+            background-color: #153b17;
+            color: #fff;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .select-payment-button:hover {
+            background-color: #0056b3;
+        }
+
+        .credit-debit-card-form {
+            display: none;
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .credit-debit-card-form form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+        }
+
+        .credit-debit-card-form label {
+            margin-bottom: 10px;
+        }
+
+        .credit-debit-card-form input[type="text"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .credit-debit-card-form button[type="submit"] {
+            background-color: #133412;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .credit-debit-card-form button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-options-container">
+        <h1>Select Your Payment Method</h1>
+        <div class="payment-option" id="credit-card-option">
+            <img src="image/download.jpg" alt="Credit Card">
+            <h2>Credit/Debit Card</h2>
+            <p>Safe and secure payment method.</p>
+            <button class="select-payment-button" onclick="selectPaymentOption('credit-card')">Select</button>
+        </div>
+        <div class="credit-debit-card-form" id="credit-debit-card-form">
+            <h2>Credit/Debit Card Payment</h2>
+            <form>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number">
+                <label for="expiration-date">Expiration Date:</label>
+                <input type="text" id="expiration-date" name="expiration-date">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv">
+                <button type="submit">Pay Now</button>
+            </form>
+        </div>
+        <div class="payment-gateway-confirmation" id="payment-gateway-confirmation" style="display: none;">
+            <h2>Payment Gateway Confirmation</h2>
+            <p>Redirecting to payment gateway...</p>
+        </div>
+        <div class="payment-option" id="cod-option">
+            <img src="image/cash.jpg" alt="Cash on Delivery">
+            <h2>Cash on Delivery</h2>
+            <p>Quick and easy payment method.</p>
+            <button class="select-payment-button" onclick="selectPaymentOption('cod')">Select</button>
+    <div id="order-confirmation" class="order-confirmation" style="display: none;">
+        <h2>Order Confirmation</h2>
+        <p>Your order has been confirmed!</p>
+    </div>
+        </div>
+    </div>
+    
+    <script>
+        function selectPaymentOption(selectedOption) {
+            if (selectedOption === "credit-card") {
+                document.getElementById("credit-debit-card-form").style.display = "block";
+            } else {
+                document.getElementById("credit-debit-card-form").style.display = "none";
+            }
+        }
+
+        document.querySelector("#credit-card-option .select-payment-button").addEventListener("click", function() {
+            selectPaymentOption("credit-card");
+        });
+
+        document.querySelector("#cod-option .select-payment-button").addEventListener("click", function() {
+            selectPaymentOption("cod");
+        });
+        function selectPaymentOption(selectedOption) {
+    if (selectedOption === "credit-card") {
+        document.getElementById("credit-debit-card-form").style.display = "block";
+        document.getElementById("order-confirmation").style.display = "none"; // Hide order confirmation if credit card selected
+    } else if (selectedOption === "cod") {
+        document.getElementById("credit-debit-card-form").style.display = "none";
+        document.getElementById("order-confirmation").style.display = "block"; // Show order confirmation if Cash on Delivery selected
+    }
+}
+document.querySelector(".credit-debit-card-form form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+    document.getElementById("payment-gateway-confirmation").style.display = "block"; // Show payment gateway confirmation
+
+    setTimeout(function() {
+        document.getElementById("payment-gateway-confirmation").style.display = "none"; // Hide payment gateway confirmation after 2 minutes
+    }, 1200);
+});
+    </script>
+</body>
+</html>

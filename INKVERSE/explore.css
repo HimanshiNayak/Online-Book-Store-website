@@ -1,0 +1,111 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.head{
+    background: #c5ddf7;width:100%;
+    padding:4px ;
+    margin-bottom: 19px;
+
+
+}
+.fsection__title {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 0%;
+    margin-bottom: 2%;
+    color: #0b3e1c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.featured__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid with minimum width of 300px */
+    gap: 20px; /* Spacing between grid items */
+    justify-content: center; /* Center items horizontally */
+}
+
+.featured__card {
+    position: relative;
+    text-align: center;
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.featured__card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.featured__title {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.featured__prices {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.featured__price,
+.featured__discount {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #37792a;
+}
+
+.featured__actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.featured__actions button {
+    background-color: #f2f2f2;
+    color: #333;
+    border: none;
+    font-size:19px;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.featured__actions button:hover {
+    background-color: #e0e0e0;
+}
+
+.featured__card:hover {
+    transform: translateY(-5px);
+}
+.featured__discount {
+    color: var(--title-color);
+    text-decoration: line-through;
+  }
+  .button{
+    display:inline-block;
+    background-color: rgb(27, 84, 27);
+    color:white;
+    font-weight:var(--font-semi-bold);
+    padding:5px 10px;
+    transition:box-shadow .4s;
+  }
+  button:hover{
+    box-shadow: 0 4px 32px hsla(230,72%,32%,0.4);
+  }
+ 
